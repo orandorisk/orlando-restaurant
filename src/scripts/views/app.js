@@ -22,12 +22,12 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
 
-    try { 
-      this._content.innerHTML = await page.render(); 
-      await page.afterRender(); 
-     } catch (error) {
+    try {
+      this._content.innerHTML = await page.render();
+      await page.afterRender();
+    } catch (error) {
       document.innerHTML = '<h1>Halaman tidak ditemukan</h1>';
-     }
+    }
 
     const page = routes[url];
     this._content.innerHTML = await page.render();

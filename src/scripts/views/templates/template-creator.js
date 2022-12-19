@@ -1,9 +1,26 @@
 import CONFIG from '../../globals/config';
 
+const folder = './icons/';
+const address = 'address.jpg';
+const city = 'city.jpg';
+
 const createRestaurantDetailTemplate = (restaurant) => {
-  const categories = restaurant.categories.map((category) => category.name).join(', ');
-  const foods = restaurant.menus.foods.map((food) => food.name).join(', ');
-  const drinks = restaurant.menus.drinks.map((drink) => drink.name).join(', ');
+  console.log(restaurant);
+  const categories = restaurant.categories.map((category) => `
+        <li>
+            <p class="detail__info-desc restaurant_cat">${category.name}</p>
+        </li>
+  `).join('');
+  const foods = restaurant.menus.foods.map((food) => `
+        <li>
+            <p class="detail__info-desc restaurant_food">${food.name}</p>
+        </li>
+  `).join('');
+  const drinks = restaurant.menus.drinks.map((drink) => `
+        <li>
+            <p class="detail__info-desc restaurant_drink">${drink.name}</p>
+        </li>
+  `).join('');
   const customerReviews = restaurant.customerReviews.map((customerReview) => `
         <div class="review__item">
         <p class="review__name">${customerReview.name}</p>
@@ -13,34 +30,38 @@ const createRestaurantDetailTemplate = (restaurant) => {
     `).join('');
 
   return `
-        <div class="card__detail-wrapper">
-            <div class="detail__title">
-              <h2>${restaurant.name}</h2>
-            </div>
-            <div class="detail__content">
-            <div class="detail__image">
-                <img data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="card__image lazyload">
-            </div>
-            <div class="detail__info">
-                <h3 class="detail__info-title">Information</h3>
-                <p class="detail__info-desc">${restaurant.description}</p>
-                <h3 class="detail__info-title">Address</h3>
-                <p class="detail__info-desc">${restaurant.address}</p>
-                <h3 class="detail__info-city">Kota</h3>
-                <p class="detail__info-desc">${restaurant.city}</p>
-                <h3 class="detail__info-title">Categories</h3>
-                <p class="detail__info-desc">${categories}</p>
-                <h3 class="detail__info-title">Foods</h3>
-                <p class="detail__info-desc">${foods}</p>
-                <h3 class="detail__info-title">Drinks</h3>
-                <p class="detail__info-desc">${drinks}</p>
-                <h3 class="detail__info-title">Customer Reviews</h3>
-                <div class="review__list">
-                  ${customerReviews}
-                </div>
-            </div>
-          </div>
-        </div>
+    <div class="detail__header">
+      <div class="detail__image">
+          <img data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="card__image lazyload">
+      </div>
+      <div class="detail__description">
+          <p class="detail__info-desc restaurant_name">${restaurant.name}</p>
+          <p class="detail__info-desc restaurant_desc">${restaurant.description}</p>
+          <ul class="wrapper__content-detail">
+            <li>
+              <img data-src="${folder + city}" alt="city" class="lazyload icons">
+              <p class="detail__info-desc restaurant_city">${restaurant.city}</p>
+            </li>
+            <li>
+              <img data-src="${folder + address}" alt="address" class="lazyload icons">
+              <p class="detail__info-desc restaurant_add">${restaurant.address}</p>
+            </li>
+          </ul>
+      </div>
+    </div>
+      <ul>
+        <h4>Categories</h4>
+        ${categories}
+      </ul>
+      <ul class="wrapper__content-detail">
+        <h4>Food</h4>
+        ${foods}
+      </ul>
+      <ul class="wrapper__content-detail">
+        <h4>Drinks</h4>
+        ${drinks}
+      </ul>
+    ${customerReviews}
     `;
 };
 

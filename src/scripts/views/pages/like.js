@@ -20,7 +20,7 @@ const Like = {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
     const restaurantsContainer = document.querySelector('#data');
 
-    if (restaurants.length != 0) {
+    if (restaurants.length !== 0) {
       restaurantsContainer.innerHTML = '';
     }
     const totalListRestaurant = restaurants.length;
