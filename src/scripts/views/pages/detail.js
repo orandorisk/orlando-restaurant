@@ -11,7 +11,7 @@ const Detail = {
         <h2>Detail Restaurant</h2>
       </section>
       <div class="content__list">
-        <div class="content__item" id="data">
+        <div class="content__item-detail" id="data">
 
         </div>
       </div>
@@ -30,7 +30,7 @@ const Detail = {
 
     LikeButtonPresenter.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
-      favoriteRestaurants: FavoriteRestaurantIdb,      
+      favoriteRestaurants: FavoriteRestaurantIdb,
       restaurant: {
         id: restaurant.id,
         name: restaurant.name,

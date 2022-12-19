@@ -11,6 +11,7 @@
     --tertiary-color: #50577A;
     --quaternary-color: #6B728E;
 
+    --white: #f5f5f5;
     --fifyty-color: #d0d30e;
     
     --font-family: 'Poppins', sans-serif;
@@ -118,6 +119,63 @@ picture {
     grid-template-columns: repeat(4, 1fr);
     margin-top: 2rem;
     gap: 1rem;
+}
+
+/* 
+    Content Item Detail
+*/
+.detail__header {
+    display: grid;
+    column-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2rem;
+}
+
+.detail__info-desc.restaurant_name {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.detail__info-desc.restaurant_desc {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    line-height: 1.6rem;
+    font-weight: 500;
+}
+
+.content__item-detail ul, 
+.detail__description ul {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.content__item-detail li,
+.detail__description li {
+    display: flex;
+    column-gap: 0.6rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 8px;
+    align-items: center;
+    background-color: transparent;
+}
+
+.wrapper__content-detail {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content__item-detail li:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.detail__description .icons {
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 .card {
