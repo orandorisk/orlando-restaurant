@@ -211,6 +211,48 @@ picture {
 }
 
 /* 
+    Review Item
+*/
+
+.review-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+}
+.review__item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 1rem;
+    box-shadow: 0px 10px 20px rgb(0 0 0 / 20%);
+    border-radius: 0.5rem;
+}
+
+.review__item-photo {
+    display: flex;
+    column-gap: 0.8rem;
+    align-items: center;
+}
+
+.photo-profile {
+    width: 25px;
+    border-radius: 50%;
+}
+
+.review__name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.review__date {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--quaternary-color);
+}
+
+/* 
     Like
 */
 .like {

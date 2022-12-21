@@ -13,6 +13,10 @@
     .content__item {
         grid-template-columns: repeat(2, 1fr);
     }    
+
+    .review-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 @media screen and (max-width: 768px) {
