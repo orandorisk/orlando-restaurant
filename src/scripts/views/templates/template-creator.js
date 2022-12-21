@@ -73,19 +73,22 @@ const createRestaurantDetailTemplate = (restaurant) => {
     `;
 };
 
-const createRestaurantItemTemplate = (restaurant) => `
-<div class="card">
-        <div class="card__image-wrapper">
-            <img data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="card__image lazyload">
-          <span>${restaurant.city}</span>
-        </div>
-        <div class="card__content">
-          <h4 class="card__rating">Rating : ⭐️ ${restaurant.rating}</h4>
-          <h3 class="card__title"><a href="${`/#/detail/${restaurant.id}`}">${restaurant.name}</a></h3>
-          <p class="card__description">${restaurant.description}</p>
-        </div>
-    </div>
-`;
+const createRestaurantItemTemplate = (restaurant) => {
+  const restaurantDesc = restaurant.description.length > 100 ? `${restaurant.description.substring(0, 100)} ...` : restaurant.description;
+  return `
+  <div class="card">
+          <div class="card__image-wrapper">
+              <img data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="card__image lazyload">
+            <span>${restaurant.city}</span>
+          </div>
+          <div class="card__content">
+            <h4 class="card__rating">Rating : ⭐️ ${restaurant.rating}</h4>
+            <h3 class="card__title"><a href="${`/#/detail/${restaurant.id}`}">${restaurant.name}</a></h3>
+            <p class="card__description">${restaurantDesc}</p>
+          </div>
+      </div>
+  `;
+};
 
 const createLikeRestaurantButtonTemplate = () => `
   <button aria-label="like this restaurant" id="likeButton" class="like">
