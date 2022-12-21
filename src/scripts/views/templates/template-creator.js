@@ -3,6 +3,7 @@ import CONFIG from '../../globals/config';
 const folder = './icons/';
 const address = 'address.jpg';
 const city = 'city.jpg';
+const photoProfile = 'photo-profile.jpg';
 
 const createRestaurantDetailTemplate = (restaurant) => {
   console.log(restaurant);
@@ -23,9 +24,14 @@ const createRestaurantDetailTemplate = (restaurant) => {
   `).join('');
   const customerReviews = restaurant.customerReviews.map((customerReview) => `
         <div class="review__item">
-        <p class="review__name">${customerReview.name}</p>
-        <p class="review__date">${customerReview.date}</p>
-        <p class="review__review">${customerReview.review}</p>
+          <div class="review__item-photo">
+            <img data-src="${folder + photoProfile}" alt="photo" class="lazyload photo-profile"/>
+            <p class="review__name">${customerReview.name}</p>
+            <p class="review__date">${customerReview.date}</p>
+          </div>
+          <div class="review__item-content"
+            <p class="review__review">${customerReview.review}</p>
+          </div>
         </div>
     `).join('');
 
@@ -61,7 +67,9 @@ const createRestaurantDetailTemplate = (restaurant) => {
         <h4>Drinks</h4>
         ${drinks}
       </ul>
-    ${customerReviews}
+    <div class="review-list">
+      ${customerReviews}
+    </div>
     `;
 };
 
