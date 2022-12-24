@@ -15,7 +15,14 @@ const Detail = {
 
         </div>
       </div>
-
+      <div class="comment__review-section">
+        <h2>Add Review this Restaurant</h2>
+        <form class="form-wrapper" id="formReview">
+          <input type="text" placeholder="Typing Your name here..." class="form" id="input-name" required/>
+          <input type="text" placeholder="Typing Your review here..." class="form section" id="input-review" required/>
+          <button type="submit" id="add" class="form submit">Submit</button>
+        </form>
+      </div>
       <div id="likeButtonContainer"></div>
     `;
   },
@@ -24,7 +31,6 @@ const Detail = {
     // Fungsi ini akan dipanggil setelah render()
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await TheRestaurantSource.detail(url.id);
-    console.log(restaurant);
     const restaurantsContainer = document.querySelector('#data');
     restaurantsContainer.innerHTML += createRestaurantDetailTemplate(restaurant);
 
@@ -40,6 +46,23 @@ const Detail = {
         city: restaurant.city,
         rating: restaurant.rating,
       },
+    });
+
+    // Add Review
+    const nameinput = document.querySelector('#input-name');
+    const reviewinput = document.querySelector('#input-review');
+    const reviewsubmit = document.querySelector('#add');
+
+    reviewsubmit.addEventListener('click', async (event) => {
+      const review = {
+        id: restaurant.id,
+        name: nameinput.value,
+        review: reviewinput.value,
+      };
+      event.preventDefault();
+      await TheRestaurantSource.addReview(review);
+      window.location.reload();
+      reviewinput.value = '';
     });
   },
 };
