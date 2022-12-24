@@ -17,6 +17,10 @@
     .review-list {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .form-wrapper {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -71,8 +75,7 @@
     
     .fab {
         font-size: 1.5rem;
-    }
-    
+    }    
 }
 
 @media screen and (max-width:300px) {
